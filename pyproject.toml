@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "new-admin-panel-sprint-2"
+version = "0.1.0"
+description = "Yandex practikum, sprint 2"
+authors = ["a.cheremushkin <a.ch3re359@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.2.1"
+uwsgi = "^2.0.21"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
