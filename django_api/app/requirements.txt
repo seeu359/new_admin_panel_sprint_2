@@ -1,0 +1,10 @@
+asgiref==3.7.2
+dj-database-url==2.0.0
+Django==4.2.1
+django-cors-headers==4.0.0
+django-split-settings==1.2.0
+psycopg2-binary==2.9.6
+python-dotenv==1.0.0
+sqlparse==0.4.4
+typing_extensions==4.6.2
+uWSGI==2.0.21
