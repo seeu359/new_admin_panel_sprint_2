@@ -1,10 +1,20 @@
-# Описание задания на 2 спринт
- 
-Описание структуры и порядок выполнения проекта:
+# Yandex practicum, sprint 2
 
-1. `docker_compose` — задача про настройку Nginx, Docker и Django.
-2. `django_api` — задача про реализацию API для выдачи информации о фильме.
+---
 
-Напоминаем, что все части работы нужно сдавать на ревью одновременно.
+### Description
 
-Успехов!
+Repository for the second sprint of the middle python course.
+
+---
+
+### Installation
+
+
+
+1. Clone this repo
+2. Set required environment variables. They are listed in `./django-api/app/.env.example`. Create `.env` file in 
+this directory and set vars.  
+3. `$ cd django-api`
+4. run `$ make up`. After this three containers(django-api, nginx, postgres) will be upped.
+5. Go to `localhost` or `127.0.0.1`
