@@ -74,9 +74,13 @@ class GenreFilmwork(mixins.UUIDMixin):
 
 
 class PersonFilmwork(mixins.UUIDMixin):
+
+    class RoleType(models.TextChoices, mixins.RoleType):
+        pass
+
     film_work = models.ForeignKey(Filmwork, on_delete=models.CASCADE)
     person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='film_person')
-    role = models.CharField(max_length=255)
+    role = models.CharField(max_length=255, choices=RoleType.choices)
     created = models.DateTimeField(_('created'), auto_now_add=True)
 
     class Meta:

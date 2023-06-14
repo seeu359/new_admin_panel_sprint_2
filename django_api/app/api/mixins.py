@@ -1,7 +1,14 @@
 import uuid
+from enum import Enum
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+
+class RoleType(Enum):
+    ACTOR = 'actor'
+    DIRECTOR = 'director'
+    WRITER = 'writer'
 
 
 class UUIDMixin(models.Model):

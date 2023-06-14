@@ -1,15 +1,9 @@
-from enum import Enum
-
 from django.contrib.postgres.aggregates import ArrayAgg
 from django.http import JsonResponse
 from django.db.models import Q
+
 from .. import models
-
-
-class RoleType(Enum):
-    ACTOR = 'actor'
-    DIRECTOR = 'director'
-    WRITER = 'writer'
+from .. import mixins
 
 
 class MoviesApiMixin:
@@ -18,7 +12,7 @@ class MoviesApiMixin:
     model = models.Filmwork
 
     @staticmethod
-    def _filter_and_aggregate_roles(role: RoleType) -> ArrayAgg:
+    def _filter_and_aggregate_roles(role: mixins.RoleType) -> ArrayAgg:
         return ArrayAgg(
             'person__full_name',
             distinct=True,
@@ -39,9 +33,9 @@ class MoviesApiMixin:
             'rating',
         ).annotate(
             genres=ArrayAgg('genres__name', distinct=True),
-            actors=self._filter_and_aggregate_roles(RoleType.ACTOR),
-            directors=self._filter_and_aggregate_roles(RoleType.DIRECTOR),
-            writers=self._filter_and_aggregate_roles(RoleType.WRITER),
+            actors=self._filter_and_aggregate_roles(mixins.RoleType.ACTOR),
+            directors=self._filter_and_aggregate_roles(mixins.RoleType.DIRECTOR),
+            writers=self._filter_and_aggregate_roles(mixins.RoleType.WRITER),
         ).order_by('title')
 
     def render_to_response(self, context, **response_kwargs):
